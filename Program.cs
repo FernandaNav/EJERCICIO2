@@ -60,6 +60,10 @@ class Program
                         break;
                     case 4:
                         Console.Clear();
+                        Console.WriteLine("-------------------------");
+                        Console.WriteLine("  REABASTECER PRODUCTO");
+                        Console.WriteLine("-------------------------");
+                        cantidadEnStock = producto.ReabastecerProducto(cantidadEnStock);
                         producto.MensajeParaContinuar();
                         break;
                     case 5:

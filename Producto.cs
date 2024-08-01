@@ -152,5 +152,36 @@ namespace INVENTARIODETIENDA
             }
             return cantidadProducto;
         }
+        public int ReabastecerProducto(int cantidadProducto)
+        {
+            int cantidadReabastacer;
+            bool validarCantidad = false;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Ingresa la cantidad de productos que quieras reabastecer: ");
+                try
+                {
+                    cantidadReabastacer = Convert.ToInt32(Console.ReadLine());
+                    if(cantidadReabastacer <= 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("La cantidad no puede ser menor o igual a 0.");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        validarCantidad = true;
+                        cantidadProducto = cantidadProducto + cantidadReabastacer;
+                    }
+                }
+                catch(FormatException)
+                {
+                    MensajeDeError();
+                }
+
+            } while (validarCantidad == false);
+            return cantidadProducto;
+        }
     }
 }
