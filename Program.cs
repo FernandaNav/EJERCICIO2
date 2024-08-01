@@ -68,6 +68,10 @@ class Program
                         break;
                     case 5:
                         Console.Clear();
+                        Console.WriteLine("-------------------------");
+                        Console.WriteLine("    ACTUALIZAR PRECIO");
+                        Console.WriteLine("-------------------------");
+                        precioProducto = producto.ActualizarPrecio(precioProducto);
                         producto.MensajeParaContinuar();
                         break;
                     case 6:

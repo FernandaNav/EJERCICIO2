@@ -104,7 +104,7 @@ namespace INVENTARIODETIENDA
         {
             Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine();
             Console.WriteLine($"Nombre: {NombreProducto}");
-            Console.WriteLine($"Precio: {precioProducto}");
+            Console.WriteLine($"Precio: Q{precioProducto}");
             Console.WriteLine($"Cantidad en Stock: {cantidadProducto}");
         }
 
@@ -182,6 +182,36 @@ namespace INVENTARIODETIENDA
 
             } while (validarCantidad == false);
             return cantidadProducto;
+        }
+
+        public double ActualizarPrecio(double precioProducto)
+        {
+            double nuevoPrecio;
+            bool validarPrecio = false;
+            do
+            {
+                Console.ForegroundColor= ConsoleColor.Yellow;
+                Console.Write("Ingresa el nuevo precio del producto: Q");
+                try
+                {
+                    nuevoPrecio = Convert.ToDouble(Console.ReadLine());
+                    if(nuevoPrecio <= 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("El precio no puede ser menor o igual a Q0.00");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        validarPrecio = true;
+                        precioProducto = nuevoPrecio;
+                    }
+                }catch(FormatException)
+                {
+                    MensajeDeError();
+                }
+            }while(validarPrecio == false);
+            return precioProducto;
         }
     }
 }
