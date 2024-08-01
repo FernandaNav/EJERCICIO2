@@ -95,11 +95,62 @@ namespace INVENTARIODETIENDA
         }
         public void MensajeParaContinuar()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.DarkGray; Console.WriteLine();
             Console.Write("Pulsa cualquier tecla para continuar...");
             Console.ResetColor(); Console.ReadKey(); Console.Clear();
         }
 
+        public void MostrarDatos(string NombreProducto, double precioProducto, int cantidadProducto)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine();
+            Console.WriteLine($"Nombre: {NombreProducto}");
+            Console.WriteLine($"Precio: {precioProducto}");
+            Console.WriteLine($"Cantidad en Stock: {cantidadProducto}");
+        }
 
+        public int VenderProducto(int cantidadProducto)
+        {
+            int cantidadDeVenta;
+            bool validarCantidad = false;
+            if (cantidadProducto == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("No existen productos en stock.");
+            }
+            else
+            {
+                do
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("Ingresa la cantidad de productos que quieras vender: ");
+                    try
+                    {
+                        cantidadDeVenta = Convert.ToInt32(Console.ReadLine());
+                        if (cantidadDeVenta <= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("La cantidad no puede ser menor o igual a 0.");
+                            Console.WriteLine();
+                        }
+                        else if (cantidadDeVenta > cantidadProducto)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("No hay suficientes existencias.");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            validarCantidad = true;
+                            cantidadProducto = cantidadProducto - cantidadDeVenta;
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        MensajeDeError();
+                    }
+                } while (validarCantidad == false);
+            }
+            return cantidadProducto;
+        }
     }
 }

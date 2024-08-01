@@ -13,8 +13,8 @@ class Program
         do
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("-------------------------"); Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("        TIENDA"); Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("        TIENDA"); 
             Console.WriteLine("-------------------------"); Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("");
             Console.WriteLine("Opción 1: Agregar producto.");
@@ -44,10 +44,18 @@ class Program
                         break;
                     case 2:
                         Console.Clear();
+                        Console.WriteLine("-----------------------");
+                        Console.WriteLine("  DATOS DEL PRODUCTO");
+                        Console.WriteLine("-----------------------");
+                        producto.MostrarDatos(nombreProducto, precioProducto, cantidadEnStock);
                         producto.MensajeParaContinuar();
                         break;
                     case 3:
                         Console.Clear();
+                        Console.WriteLine("--------------------");
+                        Console.WriteLine("  VENDER PRODUCTO");
+                        Console.WriteLine("--------------------");
+                        cantidadEnStock = producto.VenderProducto(cantidadEnStock);
                         producto.MensajeParaContinuar();
                         break;
                     case 4:
