@@ -34,26 +34,52 @@ class Program
                 {
                     case 1:
                         Console.Clear();
+                        Console.WriteLine("--------------------");
+                        Console.WriteLine("  AGREGAR PRODUCTO");
+                        Console.WriteLine("--------------------");
+                        nombreProducto = producto.NombredDelProducto();
+                        precioProducto = producto.PrecioDelProducto();
+                        cantidadEnStock = producto.CantidadStock();
+                        producto.MensajeParaContinuar();
                         break;
                     case 2:
+                        Console.Clear();
+                        producto.MensajeParaContinuar();
                         break;
                     case 3:
+                        Console.Clear();
+                        producto.MensajeParaContinuar();
                         break;
                     case 4:
+                        Console.Clear();
+                        producto.MensajeParaContinuar();
                         break;
                     case 5:
+                        Console.Clear();
+                        producto.MensajeParaContinuar();
                         break;
                     case 6:
+                        Console.Clear();
+                        producto.MensajeParaContinuar();
                         break;
                     case 7:
+                        Console.Clear();
+                        Console.WriteLine("------------------------------");
+                        Console.ForegroundColor= ConsoleColor.Yellow;
+                        Console.WriteLine("   Adiós. Ten un buen día."); Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("------------------------------");
                         break;
                     default:
+                        Console.ForegroundColor= ConsoleColor.DarkRed;
+                        Console.WriteLine("Esta opción no existe");
+                        producto.MensajeParaContinuar();
                         break;
                 }
 
             }catch(FormatException)
             {
                 producto.MensajeDeError();
+                producto.MensajeParaContinuar();
             }
             Console.ResetColor();
         } while (opcion != 7);
