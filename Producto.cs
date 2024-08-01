@@ -213,5 +213,10 @@ namespace INVENTARIODETIENDA
             }while(validarPrecio == false);
             return precioProducto;
         }
+        public void ResumenProducto(string nombreProducto, double precioProducto, int cantidadProducto)
+        {
+            Console.ForegroundColor=ConsoleColor.Yellow;
+            Console.WriteLine($"El producto de nombre {nombreProducto} tiene un precio de Q{precioProducto} y una cantidad de stock de {cantidadProducto} unidades.");
+        }
     }
 }

@@ -22,8 +22,9 @@ class Program
             Console.WriteLine("Opción 3: Vender producto.");
             Console.WriteLine("Opción 4. Reabastecer producto.");
             Console.WriteLine("Opción 5: Actualizar precio.");
-            Console.WriteLine("Opción 6: Agregar nuevo producto.");
-            Console.WriteLine("Opción 7: Salir.");
+            Console.WriteLine("Opción 6: Resumen del producto.");
+            Console.WriteLine("Opción 7: Nuevo producto.");
+            Console.WriteLine("Opción 8: Salir.");
             Console.WriteLine(); Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("Elija la opción que desea: ");
             try
@@ -76,9 +77,23 @@ class Program
                         break;
                     case 6:
                         Console.Clear();
+                        Console.WriteLine("---------------------------");
+                        Console.WriteLine("   RESUMEN DEL PRODUCTO");
+                        Console.WriteLine("---------------------------");
+                        producto.ResumenProducto(nombreProducto, precioProducto, cantidadEnStock);
                         producto.MensajeParaContinuar();
                         break;
                     case 7:
+                        Console.Clear();
+                        Console.WriteLine("---------------------------");
+                        Console.WriteLine("      NUEVO PRODUCTO");
+                        Console.WriteLine("---------------------------");
+                        nombreProducto = producto.NombredDelProducto();
+                        precioProducto = producto.PrecioDelProducto();
+                        cantidadEnStock = producto.CantidadStock();
+                        producto.MensajeParaContinuar();
+                        break;
+                    case 8:
                         Console.Clear();
                         Console.WriteLine("------------------------------");
                         Console.ForegroundColor= ConsoleColor.Yellow;
@@ -98,6 +113,6 @@ class Program
                 producto.MensajeParaContinuar();
             }
             Console.ResetColor();
-        } while (opcion != 7);
+        } while (opcion != 8);
     }
 }
